@@ -119,8 +119,8 @@ class BackendBase:
 
     def set_weights(self, weights):
         """Set weight with memory tensor."""
-        raise NotImplementedError
+        return self.estimator.set_weights(weights)
 
     def get_weights(self):
         """Get the weights."""
-        raise NotImplementedError
+        return self.estimator.get_weights()
