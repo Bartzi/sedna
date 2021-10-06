@@ -70,7 +70,6 @@ class FederatedLearning(JobBase):
         )
         super(FederatedLearning, self).__init__(
             estimator=estimator, config=config)
-        self.aggregation = ClassFactory.get_cls(ClassType.FL_AGG, aggregation)
 
         connect_timeout = int(Context.get_parameters("CONNECT_TIMEOUT", "300"))
         self.node = None
@@ -93,7 +92,6 @@ class FederatedLearning(JobBase):
         )
 
         FileOps.clean_folder([self.config.model_url], clean=False)
-        self.aggregation = self.aggregation()
         self.log.info(f"{self.worker_name} model prepared")
         if callable(self.estimator):
             self.estimator = self.estimator()
