@@ -146,7 +146,7 @@ class AggregationClient:
         self.kwargs.update({
             "ping_timeout": timeout,
             "ping_interval": interval,
-            "max_size": min(max_size, 16 * 1024 * 1024)
+            "max_size": min(max_size, self.max_size)
         })
         loop = asyncio.get_event_loop()
         loop.run_until_complete(
